@@ -1,64 +1,37 @@
-# IoT Device-to-Cloud & Dashboard APIs
+## api-key-avalable-for-free
+A field-organized index of legitimate APIs that offer a free tier, with the exact
+signup link and the steps to get a working key for each one. Every entry links to the
+provider's own signup or docs page — no third-party key resellers, no scraped keys.
 
-## ThingSpeak
+Free tiers change often (rate limits get cut, billing gets required, etc.), so treat the
+limits listed here as a snapshot and always confirm on the provider's pricing page before
+you build something that depends on a specific number.
 
-**What it is:** MathWorks-operated IoT platform for logging and visualizing sensor data
-from devices like ESP32/ESP8266/Arduino, with a REST + MQTT API.
+## Categories
 
-**Free tier:** Free for non-commercial use — commonly cited as up to ~8,000 API requests
-per day (an update roughly every ~15 seconds), 8 fields per channel.
+| Folder | Covers |
+|---|---|
+| [`weather/`](weather/README.md) | Weather and climate data APIs |
+| [`maps-geolocation/`](maps-geolocation/README.md) | Maps, geocoding, and location APIs |
+| [`ai-llm/`](ai-llm/README.md) | AI / LLM inference APIs |
+| [`iot-cloud/`](iot-cloud/README.md) | IoT device-to-cloud and dashboard platforms |
+| [`general-misc/`](general-misc/README.md) | News, currency, source control, and other general-purpose APIs |
 
-**Sign-up link:** https://thingspeak.com/users/sign_up (or via a MathWorks account:
-https://www.mathworks.com/mwaccount/register)
+## How entries are written
 
-**Steps to get a key:**
-1. Create a free MathWorks/ThingSpeak account.
-2. Click **New Channel**, name it, and enable the fields (sensors) you'll log.
-3. Save the channel, then open its **API Keys** tab.
-4. Copy the **Write API Key** (for devices sending data) and any **Read API Key** (for
-   apps pulling data back out).
+Each API entry in the category READMEs follows the same format:
 
-**Notes:** Rate limit on the free service is roughly one update per channel every 15
-seconds — space out your device's `POST`/HTTP GET calls accordingly.
+- **What it is** — one line
+- **Free tier** — the current limits, as verified on the date noted
+- **Sign-up link** — direct link to the provider's own signup/console page
+- **Steps to get a key** — the exact click path
+- **Notes** — gotchas (activation delay, card requirement, region locks, etc.)
 
----
+## Contributing
 
-## Adafruit IO
+If a link is dead or a free tier has changed, open a PR updating that entry and the
+"verified" date next to it.
 
-**What it is:** IoT data logging and dashboard service, popular with Arduino/
-CircuitPython/ESP projects; also supports MQTT.
+## License
 
-**Free tier:** Free plan allows a limited number of data points per month and up to 10
-active feeds — enough for hobby dashboards, not high-frequency logging.
-
-**Sign-up link:** https://accounts.adafruit.com/users/sign_up
-
-**Steps to get a key:**
-1. Create a free Adafruit account.
-2. Log into https://io.adafruit.com.
-3. Click your profile icon → **My Key** to see your Username and AIO Key.
-4. Use both in your device code's MQTT or HTTP calls.
-
-**Notes:** Good pairing with Adafruit's own MicroPython/CircuitPython libraries if
-you're already in that ecosystem.
-
----
-
-## Blynk
-
-**What it is:** Mobile-app-first IoT platform — build a phone dashboard for your
-microcontroller with drag-and-drop widgets.
-
-**Free tier:** Free plan includes a capped number of devices and data points/messages
-per day, sufficient for one or two personal projects.
-
-**Sign-up link:** https://blynk.io/getting-started
-
-**Steps to get a key:**
-1. Create a Blynk account (web or via the mobile app).
-2. Create a new **Template**, then a **Device** from that template.
-3. Open the device — the **Auth Token** is shown on its Device Info tab; that token is
-   your API key for that device.
-
-**Notes:** Auth tokens are per-device, not per-account — each new device you add gets
-its own token.
+MIT — see [LICENSE](LICENSE).
