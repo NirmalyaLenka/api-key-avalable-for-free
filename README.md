@@ -1,41 +1,87 @@
-## api-key-avalable-for-free
-A field-organized index of legitimate APIs that offer a free tier, with the exact
-signup link and the steps to get a working key for each one. Every entry links to the
-provider's own signup or docs page — no third-party key resellers, no scraped keys.
+# API Keys with Free Tiers — Starter Index
 
-Free tiers change often (rate limits get cut, billing gets required, etc.), so treat the
-limits listed here as a snapshot and always confirm on the provider's pricing page before
-you build something that depends on a specific number.
+This repository is intended to become a field-organized guide to legitimate APIs that offer a free tier, with official signup links and practical setup notes.
 
-## Categories
+**Current repository status:** the tracked root currently contains this README, the MIT license, a file named download, and free-api-keys-guide-report.docx. The category folders listed below are **planned, not present in the current tree**. There is not yet a working, field-organized API catalogue in the repository.
 
-| Folder | Covers |
-|---|---|
-| [`weather/`](weather/README.md) | Weather and climate data APIs |
-| [`maps-geolocation/`](maps-geolocation/README.md) | Maps, geocoding, and location APIs |
-| [`ai-llm/`](ai-llm/README.md) | AI / LLM inference APIs |
-| [`iot-cloud/`](iot-cloud/README.md) | IoT device-to-cloud and dashboard platforms |
-| [`general-misc/`](general-misc/README.md) | News, currency, source control, and other general-purpose APIs |
+Free tiers change often. Rate limits, billing requirements, regional availability, and access policies can change without notice. Confirm the provider's official pricing and terms before depending on any listed limit.
 
-## How entries are written
+## Planned categories
 
-Each API entry in the category READMEs follows the same format:
+| Category | Intended coverage | Current status |
+|---|---|---|
+| Weather | Weather and climate data | Folder/entries not yet added |
+| Maps and geolocation | Maps, geocoding, and location APIs | Folder/entries not yet added |
+| AI and LLM | Model inference and AI services | Folder/entries not yet added |
+| IoT cloud | Device-to-cloud APIs and dashboards | Folder/entries not yet added |
+| General and miscellaneous | News, currency, source control, and other APIs | Folder/entries not yet added |
 
-- **What it is** — one line
-- **Free tier** — the current limits, as verified on the date noted
-- **Sign-up link** — direct link to the provider's own signup/console page
-- **Steps to get a key** — the exact click path
-- **Notes** — gotchas (activation delay, card requirement, region locks, etc.)
+These are roadmap categories, not links to existing files. Add a category directory and its README before linking it from this page.
+
+## Standard format for future entries
+
+Each provider entry should include:
+
+- **Provider and purpose** — what the service does.
+- **Official documentation and signup** — links to the provider's own website.
+- **Free-tier limits** — exact limits, with a date checked and a link to the official pricing/terms page.
+- **Setup steps** — the actual path to create or obtain a credential, based on the provider's current UI.
+- **Authentication and rate limits** — relevant headers, quotas, reset windows, and restrictions.
+- **Billing and regional caveats** — including any card requirement, trial expiration, or geographic limitation.
+- **Data handling and attribution** — where relevant to the API.
+
+Do not label a service “free” based only on a blog post or third-party list. Free access may require billing details and may be subject to fair-use restrictions.
+
+## Safe credential handling
+
+- Never commit API keys, access tokens, passwords, or private client secrets.
+- Store local credentials in environment variables or an ignored .env file.
+- Commit only a .env.example file containing placeholder values.
+- If a secret is exposed, revoke or rotate it with the provider. Removing it from the latest commit alone does not invalidate it.
+- Do not paste working keys into issues, pull requests, screenshots, or documentation.
+
+Example local configuration:
+
+~~~bash
+# Example only — use a locally stored credential
+export SERVICE_API_KEY="your_key_here"
+~~~
+
+Application code should read the environment variable rather than embedding the value in source code.
+
+## Current files
+
+~~~text
+.
+├── README.md
+├── LICENSE
+├── download
+└── free-api-keys-guide-report.docx
+~~~
+
+The file named download currently contains only these ignore patterns:
+
+~~~text
+.DS_Store
+*.log
+~~~
+
+It is **not** a download script. It has been left in place to avoid a potentially risky rename without checking all references. The DOCX is present, but this README does not independently validate its contents, provider links, or stated limits.
 
 ## Contributing
 
-If a link is dead or a free tier has changed, open a PR updating that entry and the
-"verified" date next to it.
+Before adding or updating a provider:
+
+1. Check the provider's official documentation, pricing, and terms.
+2. Use direct official signup/documentation links.
+3. Record the date on which the limits were checked.
+4. Explain authentication, quotas, billing requirements, and important restrictions.
+5. Verify that the entry contains no real credentials.
+6. Check every relative Markdown link against a file that actually exists in the repository.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
-
+MIT — see LICENSE.
 
 ---
 
